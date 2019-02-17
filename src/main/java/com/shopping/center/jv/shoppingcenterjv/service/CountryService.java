@@ -18,14 +18,13 @@ public class CountryService {
     }
 
     public Country saveCountry() {
-        City cordoba = new City();
         Country argentina = new Country();
         argentina.setName("Argentina");
+        City cordoba = new City();
         cordoba.setName("Cordoba");
-
-        argentina.setCities(Sets.newHashSet(cordoba));
         cordoba.setCountry(argentina);
-
+        argentina.setCities(Sets.newHashSet(cordoba));
+        //FIXME this return is throwing stackoverflow onto CountryController
         return countryRepository.save(argentina);
     }
 }
