@@ -9,7 +9,6 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -18,15 +17,16 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@EqualsAndHashCode(exclude = {"cities", "product"})
-public class Country extends BaseEntity{
+public class Product extends BaseEntity{
 
+    private String description;
     private String name;
+    private Double price;
 
-    @OneToMany(mappedBy = "country", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<City> cities = new HashSet<>();
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Country> countries = new HashSet<>();
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "countries")
-    private Product product;
+    @JoinColumn(name = "products")
+    private ShippingCart shippingCart;
 }

@@ -3,9 +3,6 @@ package com.shopping.center.jv.shoppingcenterjv.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import lombok.EqualsAndHashCode;
@@ -18,11 +15,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @EqualsAndHashCode(exclude = "country")
-public class City {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idCity;
+public class City extends BaseEntity{
 
     private String name;
 

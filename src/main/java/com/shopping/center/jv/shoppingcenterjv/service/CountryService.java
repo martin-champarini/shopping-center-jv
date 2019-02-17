@@ -17,7 +17,7 @@ public class CountryService {
         countryRepository = repository;
     }
 
-    public Country saveCountry() {
+    public String saveCountry() {
         Country argentina = new Country();
         argentina.setName("Argentina");
         City cordoba = new City();
@@ -25,6 +25,11 @@ public class CountryService {
         cordoba.setCountry(argentina);
         argentina.setCities(Sets.newHashSet(cordoba));
         //FIXME this return is throwing stackoverflow onto CountryController
-        return countryRepository.save(argentina);
+        Country countrySaved = countryRepository.save(argentina);
+
+        if (countrySaved == null)
+            return "ERROR";
+
+        return "SUCESS";
     }
 }

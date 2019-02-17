@@ -24,9 +24,9 @@ public class CountryController {
         this.countryService = countryService;
     }
 
-    @PutMapping(value = "addCountry")
+    @PostMapping(value = "addCountry")
     @ApiOperation(value = "Add Country And City")
-    public Country saveCountry() {
+    public String saveCountry() {
         return countryService.saveCountry();
     }
 
