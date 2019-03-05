@@ -2,7 +2,7 @@ package com.shopping.center.jv.shoppingcenterjv.controller;
 
 
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.shopping.center.jv.shoppingcenterjv.model.User;
@@ -23,8 +23,8 @@ public class UserController {
 
     @PostMapping(value = "createUser")
     @ApiOperation(value = "Create user")
-    public User createUser(@RequestParam String username, @RequestParam String password) {
+    public User createUser(@RequestBody User user) {
 
-        return userService.createUser(username, password);
+        return userService.createUser(user.getUsername(), user.getPassword());
     }
 }
